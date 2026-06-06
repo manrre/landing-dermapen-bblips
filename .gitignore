@@ -54,3 +54,5 @@ embeddings/
 *.wav
 *.flac
 *.mp3
+
+*.tar.gz
