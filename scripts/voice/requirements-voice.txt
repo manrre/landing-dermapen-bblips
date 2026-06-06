@@ -1,0 +1,4 @@
+speechbrain>=1.0.0
+torch
+torchaudio
+numpy

@@ -1,0 +1,40 @@
+{
+  "name": "landing-medicina-regenerativa",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "dev:clean": "powershell -Command \"if (Test-Path .next) { Remove-Item -Recurse -Force .next }\" && next dev -- --hostname 0.0.0.0 --port 3000",
+    "build": "next build",
+    "start": "next start",
+    "preview:clean": "npm run build && next start -- --port 3000",
+    "lint": "next lint",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "healthcheck": "powershell -ExecutionPolicy Bypass -File scripts/landing-local-healthcheck.ps1",
+    "qa": "npm run typecheck && npm test && npm run build && npm run test:e2e"
+  },
+  "dependencies": {
+    "gsap": "^3.15.0",
+    "lucide-react": "^1.14.0",
+    "next": "^15.5.18",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.60.0",
+    "@tailwindcss/postcss": "4.2.4",
+    "@types/node": "25.6.0",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
+    "dotenv": "^17.4.2",
+    "eslint": "9.39.4",
+    "eslint-config-next": "^15.5.15",
+    "postcss": "8.5.15",
+    "tailwindcss": "4.2.4",
+    "typescript": "6.0.3",
+    "vitest": "^4.1.7"
+  }
+}

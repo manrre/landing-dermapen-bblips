@@ -1,0 +1,3 @@
+display_name: Hotmart Affiliate Links
+short_description: Manage Hotmart affiliate tracking links.
+default_prompt: Audit and prepare Hotmart affiliate links for a campaign, preserving commission tracking and adding SRC campaign parameters.

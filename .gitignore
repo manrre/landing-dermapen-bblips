@@ -1,0 +1,56 @@
+node_modules
+.next
+out
+dist
+build
+.env
+.env*
+!.env.example
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.DS_Store
+
+# Build artifacts & test results
+artifacts/
+test-results/
+*.log
+tsconfig.tsbuildinfo
+
+# Temp / extracted files
+tmp_*/
+__pycache__/
+*.pyc
+
+# IDE
+.vscode/
+
+# Docs not relevant to landing
+app/docx/
+app/deliverables/
+app/anexos-vivos-seminario-a1-a10.md
+app/build_manual_expandido_docx.py
+app/build_seminario_docx.py
+app/hoja-de-ruta-editorial-seminario.md
+app/manual-profesional-bruto-reconstruido.md
+app/manual-recursivo-expandido.md
+app/matriz-correccion-pre-docx-seminario.md
+app/paquete-visual-editorial-seminario.md
+app/seminario-manual-maestro.md
+docs/home-voice-automation/
+docs/pdf-multiagent-system/
+docs/trading-bot-developer-specifier/
+
+# Other projects in repo
+esp32/
+expand-c-after-ubuntu.txt
+src/lib/home-voice-automation/
+
+# Local voice experiments
+voice-data/
+models/
+embeddings/
+*.wav
+*.flac
+*.mp3
