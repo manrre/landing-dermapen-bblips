@@ -1,7 +1,11 @@
 import {
   ArrowRight,
   BadgeCheck,
+  BookOpenCheck,
   CheckCircle2,
+  FileText,
+  MessageCircle,
+  Play,
   ShieldCheck,
   Sparkles,
 } from "lucide-react";
@@ -13,6 +17,7 @@ import { CountryEyebrow } from "@/components/landing/country-eyebrow";
 import { HotmartButton } from "@/components/landing/hotmart-button";
 import { LivePrice } from "@/components/landing/live-price";
 import { getOfferPricing } from "@/lib/pricing";
+import { whatsappUrl } from "@/lib/hotmart-links";
 import {
   audienceItems,
   courseStats,
@@ -23,6 +28,7 @@ import {
   roiItems,
   scarcityOffers,
   solutionItems,
+  testimonials,
   treatmentBenefits,
   trustItems,
   visualProofItems,
@@ -59,10 +65,11 @@ export default function Home() {
       <main>
       <TopScarcity pricing={pricing} />
       <Hero pricing={pricing} />
-      <TrustBar />
+      <MiniOferta pricing={pricing} />
       <ProblemSection />
       <SolutionSection />
       <CourseBenefitSlider />
+      <VisualPreviewSection />
       <BenefitsSection />
       <MediaProofSection />
       <RoiSection pricing={pricing} />
@@ -88,28 +95,69 @@ function TopScarcity({ pricing }: { pricing: ReturnType<typeof getOfferPricing> 
   );
 }
 
+function MiniOferta({ pricing }: { pricing: ReturnType<typeof getOfferPricing> }) {
+  return (
+    <section className="section-pad mini-oferta-section">
+      <div className="container-page mini-oferta-grid">
+        <div className="mini-oferta-trust-row">
+          <span className="mini-oferta-trust-badge">
+            <BadgeCheck size={18} /> 100% online
+          </span>
+          <span className="mini-oferta-trust-badge">
+            <BadgeCheck size={18} /> Certificado digital
+          </span>
+          <span className="mini-oferta-trust-badge">
+            <ShieldCheck size={18} /> Garantia de 7 dias
+          </span>
+        </div>
+        <h2>
+          Todo esto por <LivePrice fallback={pricing.displayDiscountCop} />
+        </h2>
+        <ul className="mini-oferta-bullets">
+          <li><CheckCircle2 size={18} /> 12 lecciones online</li>
+          <li><CheckCircle2 size={18} /> 4 demostraciones reales en video</li>
+          <li><CheckCircle2 size={18} /> Manual PDF de 40 paginas</li>
+          <li><CheckCircle2 size={18} /> Guia de mas de 15 materiales</li>
+          <li><CheckCircle2 size={18} /> Certificado digital de finalizacion</li>
+          <li><CheckCircle2 size={18} /> Acceso de por vida</li>
+          <li><CheckCircle2 size={18} /> Garantia de 7 dias</li>
+        </ul>
+        <div className="mini-oferta-actions">
+          <HotmartButton source="meta-co-mini">Quiero acceder al curso por {offer.priceUsd} <ArrowRight size={18} /></HotmartButton>
+        </div>
+        <p className="mini-oferta-footnote">
+          <ShieldCheck size={14} /> Pago seguro procesado por Hotmart
+        </p>
+      </div>
+    </section>
+  );
+}
+
 function Hero({ pricing }: { pricing: ReturnType<typeof getOfferPricing> }) {
   return (
     <section className="hero-section">
       <div className="container-page hero-grid">
         <div className="hero-copy">
           <CountryEyebrow />
-          <h1>Aprende Microneedling Facial + BBLips en {courseStats.totalLessons} lecciones online — desde {offer.priceUsd}</h1>
+          <h1>Aprende Dermapen + BBLips online desde {offer.priceUsd}</h1>
           <p className="hero-lede">
-            Aprende desde cero con demostraciones reales, guia de materiales, bioseguridad, manual PDF,
-            certificado digital y acceso de por vida. Empieza hoy por solo {offer.priceUsd},
-            sin comprar equipos a ciegas.
+            12 lecciones, 4 demos reales, manual PDF, certificado digital y acceso de por vida.
           </p>
-          <p className="price-note" aria-label="Precio del curso">
-            Precio hoy: desde <LivePrice fallback={pricing.displayDiscountCop} /> (Desde {offer.priceUsd} / precio en moneda local segun tu pais). El valor final puede variar por conversion y metodo de pago.
-          </p>
-          <div className="hero-actions" aria-label="Accion principal">
-            <HotmartButton source="meta-co-hero">No perder el descuento del 60% — Inscribirme ahora</HotmartButton>
+          <div className="hero-trust-row" aria-label="Confianza">
+            <span className="hero-trust-tag"><ShieldCheck size={16} /> Garantia de 7 dias</span>
+            <span className="hero-trust-tag"><CheckCircle2 size={16} /> Pago seguro Hotmart</span>
+            <span className="hero-trust-tag"><CheckCircle2 size={16} /> Acceso inmediato</span>
           </div>
-          <div className="mini-proof" aria-label="Beneficios rapidos">
-            <span><CheckCircle2 size={16} /> 100% online</span>
-            <span><CheckCircle2 size={16} /> Certificado</span>
-            <span><CheckCircle2 size={16} /> Garantia 7 dias</span>
+          <div className="hero-actions" aria-label="Accion principal">
+            <HotmartButton source="meta-co-hero">Acceder al curso por {offer.priceUsd} <ArrowRight size={18} /></HotmartButton>
+          </div>
+          <p className="hero-price-hint">
+            <LivePrice fallback={pricing.displayDiscountCop} /> en tu moneda local · pago unico
+          </p>
+          <div className="hero-whatsapp-link">
+            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+              <MessageCircle size={16} /> Tengo una duda antes de comprar
+            </a>
           </div>
         </div>
         <div className="hero-visual" aria-label="Imagen del curso">
@@ -152,30 +200,19 @@ function ProblemSection() {
     <section className="section-pad problem-section">
       <div className="container-page split-grid">
         <div>
-          <p className="eyebrow">Para empezar con criterio</p>
-          <h2>¿3 meses viendo tutoriales sin saber por donde empezar? Es suficiente.</h2>
-        </div>
-        <div className="agitation-block">
-          <p className="agitation-lead">
-            Mientras tanto, cada mes que pasa sin formarte:
-          </p>
-          <ul className="check-list">
-            <li><CheckCircle2 size={18} /> Pierdes clientas que preguntan por microneedling y BBLips porque no sabes como ofrecerlos.</li>
-            <li><CheckCircle2 size={18} /> Inviertes en materiales que no sabes usar, sin una ruta clara de aprendizaje.</li>
-            <li><CheckCircle2 size={18} /> La inseguridad tecnica te frena a cobrar lo que realmente vale un servicio estetico.</li>
-          </ul>
+          <p className="eyebrow">El problema</p>
+          <h2>Quieres ofrecer Dermapen + BBLips, pero no sabes por donde empezar</h2>
         </div>
         <div className="copy-stack">
+          <ul className="check-list">
+            <li><CheckCircle2 size={18} /> No sabes que aguja usar ni como estructurar el protocolo.</li>
+            <li><CheckCircle2 size={18} /> Has visto tutoriales, pero no tienes una ruta clara de aprendizaje.</li>
+            <li><CheckCircle2 size={18} /> Quieres ofrecer Dermapen + BBLips sin invertir a ciegas en materiales.</li>
+          </ul>
           <p>
             Si quieres empezar en estetica o ampliar tu cabina, este curso te da una ruta practica
-            para entender la tecnica, elegir materiales con criterio, cuidar la bioseguridad y
-            practicar antes de invertir de mas.
+            para entender la tecnica, elegir materiales con criterio y practicar antes de invertir de mas.
           </p>
-          <ul className="check-list">
-            {audienceItems.map((item) => (
-              <li key={item}><CheckCircle2 size={18} /> {item}</li>
-            ))}
-          </ul>
         </div>
       </div>
     </section>
@@ -191,9 +228,6 @@ function SolutionSection() {
           <h2>12 lecciones que te llevan de cero a atender con criterio</h2>
           <p className="emotion-lede">
             Imagina llegar a tu cabina y saber exactamente que aguja usar, que producto aplicar y como cobrar cada sesion sin dudar.
-          </p>
-          <p>
-            12 lecciones organizadas en 2 modulos: microneedling facial y BBLips. Con 4 demostraciones reales, guia de 15 materiales, protocolo de bioseguridad y manual PDF de 40 paginas para consultar en cabina.
           </p>
         </div>
         <div className="feature-grid">
@@ -216,22 +250,62 @@ function SolutionSection() {
   );
 }
 
+function VisualPreviewSection() {
+  return (
+    <section className="section-pad visual-preview-section">
+      <div className="container-page">
+        <div className="section-heading center">
+          <p className="eyebrow">Mira lo que vas a aprender</p>
+          <h2>Un vistazo real del contenido del curso</h2>
+        </div>
+        <div className="visual-preview-grid">
+          {/* Video preview */}
+          <figure className="visual-preview-card visual-preview-video">
+            <video autoPlay muted loop playsInline preload="metadata" controlsList="nodownload noremoteplayback">
+              <source src={mediaAssets.commercialVideo} type="video/mp4" />
+            </video>
+            <figcaption>Demo de procedimiento real</figcaption>
+          </figure>
+          {/* Course mockup */}
+          <figure className="visual-preview-card">
+            <Image src={mediaAssets.courseMockup} alt="Vista del curso online" fill sizes="(max-width: 768px) 100vw, 25vw" />
+            <figcaption>Plataforma del curso</figcaption>
+          </figure>
+          {/* Manual PDF placeholder — REEMPLAZAR con imagen real del manual */}
+          <figure className="visual-preview-card visual-preview-placeholder">
+            <FileText size={36} />
+            <figcaption>Manual PDF de 40 paginas</figcaption>
+          </figure>
+          {/* Certificado placeholder — REEMPLAZAR con imagen real del certificado */}
+          <figure className="visual-preview-card visual-preview-placeholder">
+            <BadgeCheck size={36} />
+            <figcaption>Certificado digital</figcaption>
+          </figure>
+        </div>
+        <p className="visual-preview-disclaimer">
+          Las imagenes son referencias educativas. Los resultados pueden variar segun piel, tecnica, materiales y cuidados de cada persona.
+        </p>
+        <p className="section-link center">
+          <a href="#contenido-curso" className="btn-text">Ver contenido completo del curso</a>
+        </p>
+      </div>
+    </section>
+  );
+}
+
 function BenefitsSection() {
   return (
     <section className="section-pad benefits-section">
       <div className="container-page">
         <div className="section-heading center">
           <p className="eyebrow">Resultados que puedes ofrecer</p>
-          <h2>Resultados visibles desde la 3a sesion</h2>
+          <h2>Aprende protocolos para resultados progresivos</h2>
           <p className="emotion-lede">
             Tus clientas notaran la diferencia en textura, luminosidad e hidratacion. Tu notaras la diferencia en tu lista de precios.
           </p>
-          <p>
-            6 areas de aplicacion para sumar a tu cabina: textura y luminosidad, lineas finas, poros, marcas de acne, labios hidratados con BBLips y servicio combinado. Cada una con criterios claros de aplicacion y frecuencia.
-          </p>
         </div>
         <div className="benefits-grid">
-          {treatmentBenefits.map((benefit) => (
+          {treatmentBenefits.slice(0, 3).map((benefit) => (
             <article key={benefit.title} className="benefit-card">
               <Sparkles size={20} />
               <h3>{benefit.title}</h3>
@@ -239,6 +313,18 @@ function BenefitsSection() {
             </article>
           ))}
         </div>
+        <details className="benefits-more" open>
+          <summary>Ver mas resultados que puedes ofrecer</summary>
+          <div className="benefits-more-grid">
+            {treatmentBenefits.slice(3).map((benefit) => (
+              <article key={benefit.title} className="benefit-card">
+                <Sparkles size={20} />
+                <h3>{benefit.title}</h3>
+                <p>{benefit.text}</p>
+              </article>
+            ))}
+          </div>
+        </details>
         <p className="section-link">
           <a href="#oferta" className="btn-text">Quiero ver el precio con descuento</a>
         </p>
@@ -298,13 +384,13 @@ function RoiSection({ pricing }: { pricing: ReturnType<typeof getOfferPricing> }
     <section className="section-pad roi-section">
       <div className="container-page split-grid">
         <div>
-          <p className="eyebrow">Oferta de entrada</p>
-          <h2>15.000+ alumnas empezaron asi. Por solo 10 USD.</h2>
+          <p className="eyebrow">¿Vale la pena?</p>
+          <h2>15.000+ alumnas en 35 paises ya empezaron</h2>
           <p className="emotion-lede">
-            Por menos de lo que cuesta un kit de pruebas, tienes 12 lecciones, manual PDF, 4 demostraciones reales y certificado digital.
+            Por menos de lo que cuesta un kit de pruebas accedes a una formacion completa que puedes repetir a tu ritmo.
           </p>
           <p className="section-copy">
-            Accede desde tu pais por <LivePrice fallback={pricing.displayDiscountCop} />. Sin materiales previos, sin experiencia requerida. Pierdes mas tiempo dudando que lo que cuesta el curso.
+            Sin materiales previos, sin experiencia requerida. El curso te da criterio para que despues compres solo lo que necesitas.
           </p>
           <HotmartButton source="meta-co-roi">Quiero el precio de lanzamiento</HotmartButton>
         </div>
@@ -328,31 +414,52 @@ function RoiSection({ pricing }: { pricing: ReturnType<typeof getOfferPricing> }
 function AuthoritySection() {
   return (
     <section className="section-pad authority-section">
-      <div className="container-page authority-layout">
-        <div className="authority-panel">
+      <div className="container-page">
+        <div className="section-heading center">
           <p className="eyebrow">Yess Lacroix Academy</p>
-          <h2>Yess Lacroix Academy: comunidad en 35 paises</h2>
-          <p>
-            Mas de 15.000 alumnas han hecho parte de la comunidad de Yess Lacroix Academy en distintos paises.
-            El curso se entrega por una comunidad online privada, con acceso digital y certificado de finalizacion.
-          </p>
-          <div className="authority-stats">
-            <span><strong>15.000+</strong> alumnas en comunidad</span>
-            <span><strong>35</strong> paises mencionados</span>
-            <span><strong>7 dias</strong> garantia</span>
+          <h2>Formacion creada por Yess Lacroix Academy, comunidad online con alumnas en 35 paises</h2>
+        </div>
+        <div className="authority-grid">
+          {/* Foto Yess Lacroix — REEMPLAZAR con imagen real */}
+          <div className="authority-photo-card">
+            <div className="authority-photo-placeholder">
+              <Image
+                src={mediaAssets.yessLacroixPhoto}
+                alt="Yess Lacroix"
+                fill
+                sizes="(max-width: 768px) 100vw, 380px"
+                className="authority-photo-img"
+              />
+            </div>
+            <h3>Yess Lacroix</h3>
+            <p>Fundadora de Yess Lacroix Academy</p>
+          </div>
+          {/* Comunidad visual — REEMPLAZAR con screenshot real */}
+          <div className="authority-community-card">
+            <div className="authority-community-placeholder">
+              <Image
+                src={mediaAssets.communityScreenshot}
+                alt="Comunidad de alumnas Yess Lacroix Academy"
+                fill
+                sizes="(max-width: 768px) 100vw, 500px"
+                className="authority-community-img"
+              />
+            </div>
+            <div className="authority-stats">
+              <span><strong>15.000+</strong> alumnas en comunidad</span>
+              <span><strong>35</strong> paises</span>
+              <span><strong>7 dias</strong> garantia</span>
+            </div>
           </div>
         </div>
-        <div className="note-panel">
-          <ShieldCheck size={30} />
+        <div className="note-panel authority-note">
+          <ShieldCheck size={24} />
           <h3>Nota responsable</h3>
           <p>
             Este curso es una formacion online en tecnicas esteticas. Los resultados pueden variar.
             Revisa la normativa aplicable en tu ciudad o pais antes de ofrecer procedimientos a terceros.
           </p>
         </div>
-        <p className="section-link">
-          <a href="#oferta" className="btn-text">Unete a 15.000+ alumnas</a>
-        </p>
       </div>
     </section>
   );
@@ -366,8 +473,7 @@ function TestimonialsSection() {
           <p className="eyebrow">Testimonios reales</p>
           <h2>Escucha a quienes ya se formaron</h2>
           <p>
-            Escucha la experiencia real de quienes ya estan formandose con Dermapen + BBLips.
-            Resultados, aprendizaje y motivacion desde adentro.
+            La experiencia real de quienes ya estan aprendiendo Dermapen + BBLips.
           </p>
         </div>
         <div className="testimonial-video-wrapper">
@@ -380,6 +486,17 @@ function TestimonialsSection() {
           >
             <source src="/course-media/testimonio-landing.mp4" type="video/mp4" />
           </video>
+        </div>
+        <div className="testimonial-cards-grid">
+          {testimonials.map((t) => (
+            <blockquote key={t.name} className={`testimonial-card${t.type === 'whatsapp' ? ' testimonial-wa' : ''}`}>
+              <p>{t.text}</p>
+              <footer>
+                <strong>{t.name}</strong>
+                <span>{t.country}</span>
+              </footer>
+            </blockquote>
+          ))}
         </div>
       </div>
     </section>
@@ -422,7 +539,7 @@ function OfferSection({ pricing }: { pricing: ReturnType<typeof getOfferPricing>
           <p className="eyebrow">Oferta especial</p>
           <h2>Inscribete hoy y accede al curso completo por precio de lanzamiento</h2>
           <p>
-            La oferta de lanzamiento baja el acceso completo a {offer.priceUsd}. El precio final puede moverse por
+            La oferta de lanzamiento baja el acceso completo a {offer.priceUsd}. El precio final puede variar segun
             conversion, pais o metodo de pago.
           </p>
           <ul className="scarcity-list">
@@ -434,9 +551,26 @@ function OfferSection({ pricing }: { pricing: ReturnType<typeof getOfferPricing>
         <div className="offer-box">
           <span className="old-price">Antes <LivePrice fallback={pricing.displayRegularCop} type="regular" /></span>
           <strong className="current-price-big"><LivePrice fallback={pricing.displayDiscountCop} /></strong>
-          <HotmartButton source="meta-co-trust">Aprovechar antes de que suba a {offer.regularUsd}</HotmartButton>
+          <HotmartButton source="meta-co-trust">Acceder ahora por {offer.priceUsd} <ArrowRight size={18} /></HotmartButton>
           <CountdownTimer />
-          <p className="guarantee-text"><ShieldCheck size={16} /> Garantia de {offer.guarantee}: si no quedas satisfecha, te reembolsamos</p>
+          <p className="guarantee-text"><ShieldCheck size={16} /> Garantia de {offer.guarantee}: si no quedas satisfecha, te reembolsamos el 100%</p>
+          <div className="offer-after-pay">
+            <h3>Que pasa despues de pagar</h3>
+            <ul>
+              <li><CheckCircle2 size={14} /> Recibes acceso online inmediato</li>
+              <li><CheckCircle2 size={14} /> Ves las clases desde celular, tablet o PC</li>
+              <li><CheckCircle2 size={14} /> Descargas el manual PDF de 40 paginas</li>
+              <li><CheckCircle2 size={14} /> Terminas el contenido y recibes tu certificado digital</li>
+            </ul>
+          </div>
+          <p className="offer-hotmart-seal">
+            <ShieldCheck size={14} /> Compra segura procesada por <strong>Hotmart</strong>
+          </p>
+          <p className="offer-whatsapp-link">
+            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+              <MessageCircle size={14} /> ¿Tienes dudas? Escribenos por WhatsApp
+            </a>
+          </p>
         </div>
       </div>
     </section>
@@ -469,10 +603,13 @@ function FinalCta({ pricing }: { pricing: ReturnType<typeof getOfferPricing> }) 
     <section className="final-cta">
       <div className="container-page final-cta-inner">
         <Sparkles size={28} aria-hidden="true" />
-        <h2>Empieza hoy con Microneedling Facial y BBLips por solo <LivePrice fallback={pricing.displayDiscountCop} /></h2>
-        <p>Inscribete con descuento y accede a una formacion online que puedes repetir a tu ritmo.</p>
-        <HotmartButton source="meta-co-final" variant="dark">Quiero el precio de lanzamiento antes que se acabe <ArrowRight size={18} /></HotmartButton>
-        <p className="guarantee-badge"><ShieldCheck size={16} /> Garantia de {offer.guarantee}: si no quedas satisfecha, te reembolsamos</p>
+        <h2>Empieza hoy con Dermapen + BBLips desde <LivePrice fallback={pricing.displayDiscountCop} /></h2>
+        <p>Inscribete ahora y accede a las 12 lecciones, 4 demos reales, manual PDF y certificado digital.</p>
+        <HotmartButton source="meta-co-final" variant="dark">Acceder al curso por {offer.priceUsd} <ArrowRight size={18} /></HotmartButton>
+        <p className="guarantee-badge"><ShieldCheck size={16} /> Garantia de {offer.guarantee}: si no quedas satisfecha, Hotmart te reembolsa el 100%</p>
+        <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="final-cta-wa">
+          <MessageCircle size={14} /> ¿Tienes dudas? Escribenos por WhatsApp
+        </a>
       </div>
     </section>
   );

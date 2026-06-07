@@ -53,6 +53,10 @@ export const mediaAssets = {
     testimonialShort: "/course-media/posters/testimonial-short-poster.jpg",
     commercialFeed: "/course-media/posters/commercial-feed-poster.jpg",
   },
+  // REEMPLAZAR con foto real de Yess Lacroix
+  yessLacroixPhoto: "/dermapen-bblips/yess-lacroix.jpg",
+  // REEMPLAZAR con screenshot real de la comunidad
+  communityScreenshot: "/dermapen-bblips/comunidad-screenshot.jpg",
 };
 
 export const trustItems = [
@@ -210,34 +214,70 @@ export const curriculum = [
 
 export const faqs = [
   {
-    question: "Necesito experiencia previa?",
+    question: "¿El curso es 100% online?",
     answer:
-      "No. El curso esta planteado para principiantes y tambien para esteticistas o profesionales de belleza que quieren sumar nuevos servicios.",
+      "Si. Todo el contenido es online: clases grabadas, manual PDF descargable y demostraciones en video. Accedes desde celular, tablet o computador a tu ritmo.",
   },
   {
-    question: "El curso incluye materiales?",
+    question: "¿Necesito experiencia previa?",
     answer:
-      "No necesitas comprar materiales antes de inscribirte. Dentro del curso veras que se usa, para que sirve cada elemento y como decidir con mas criterio antes de invertir.",
+      "No. El curso esta disenado para principiantes y tambien para esteticistas o profesionales de belleza que quieren sumar Dermapen + BBLips a sus servicios.",
   },
   {
-    question: "Puedo comprar desde mi pais?",
+    question: "¿Necesito comprar el Dermapen o materiales antes?",
     answer:
-      "Si. La compra se realiza a traves de una pasarela de pago segura, lider en Latinoamerica. El valor final puede variar segun conversion, metodo de pago o cuotas disponibles.",
+      "No. Dentro del curso ves exactamente que se usa y para que sirve cada material. Te recomendamos ver el contenido primero y decidir con criterio antes de invertir en equipos. La guia de materiales viene incluida.",
   },
   {
-    question: "Cuando recibo el acceso?",
+    question: "¿Cuando recibo el acceso despues de pagar?",
     answer:
-      "El acceso es online y normalmente llega despues de la aprobacion del pago. Con tarjeta suele ser rapido.",
+      "El acceso es inmediato una vez Hotmart aprueba el pago. Con tarjeta de credito o debito suele ser en minutos. Con otros metodos puede tomar algunas horas.",
   },
   {
-    question: "El certificado tiene aval internacional?",
+    question: "¿Puedo comprar desde mi pais?",
     answer:
-      "Es un certificado de finalizacion emitido por Yess Lacroix Academy. No debe presentarse como aval gubernamental o permiso profesional.",
+      "Si. Hotmart acepta multiples metodos de pago en Latinoamerica: tarjetas de credito y debito, PSE (Colombia), Oxxo (Mexico), y otros metodos locales. El precio se convierte a tu moneda local.",
   },
   {
-    question: "Puedo preguntar antes de comprar?",
+    question: "¿El certificado tiene aval internacional o gubernamental?",
     answer:
-      "Si. Escribenos por WhatsApp antes de inscribirte. Resolvemos dudas sobre acceso, pago, contenido o materiales en minutos. Haz clic en el icono de WhatsApp en la pantalla o en el enlace del inicio.",
+      "Es un certificado digital de finalizacion emitido por Yess Lacroix Academy. No debe presentarse como aval gubernamental, permiso profesional ni titulo oficial. Es un reconocimiento de que completaste la formacion.",
+  },
+  {
+    question: "¿Como funciona la garantia de 7 dias?",
+    answer:
+      "Hotmart te protege con una garantia de 7 dias. Si el curso no cumple lo que esperabas, puedes solicitar el reembolso directamente en la plataforma Hotmart y te devuelven el 100% de tu dinero sin preguntas.",
+  },
+  {
+    question: "¿Esto no lo puedo aprender gratis en YouTube?",
+    answer:
+      "En YouTube encuentras fragmentos, pero no una ruta completa con protocolos, bioseguridad, criterios de materiales y demostraciones paso a paso. Este curso te ahorra meses de ensayo y error, y te da un manual PDF para consultar en cabina.",
+  },
+  {
+    question: "¿Tengo una duda antes de comprar, como te contacto?",
+    answer:
+      "Escribenos por WhatsApp al +57 311 874 5095. Resolvemos tus dudas sobre acceso, contenido, pago o materiales en minutos. No hay compromiso al preguntar.",
+  },
+];
+
+export const testimonials = [
+  {
+    type: "whatsapp",
+    name: "Carolina M.",
+    country: "Colombia",
+    text: "Hola Yess! Ya vi las primeras 4 clases y estoy feliz. Explicas todo super claro. Ya pedi mi dermapen con criterio, sin comprar a ciegas. Gracias!",
+  },
+  {
+    type: "text",
+    name: "Valentina R.",
+    country: "Mexico",
+    text: "Lo que mas me gusto es que no necesitas experiencia. Las demos en modelo real me dieron la confianza para practicar. El manual PDF lo tengo en el celular y lo consulto en cabina.",
+  },
+  {
+    type: "text",
+    name: "Daniela S.",
+    country: "Argentina",
+    text: "El modulo de bioseguridad vale oro. Nadie te ensena eso en tutoriales. Ahora se exactamente que protocolo seguir y como cuidar a mis clientas.",
   },
 ];
 

@@ -5,7 +5,8 @@ export type HotmartSource =
   | "meta-co-faq"
   | "meta-co-final"
   | "meta-co-floating"
-  | "meta-co-wa";
+  | "meta-co-wa"
+  | "meta-co-mini";
 
 export const hotmartSources: HotmartSource[] = [
   "meta-co-hero",
@@ -15,6 +16,7 @@ export const hotmartSources: HotmartSource[] = [
   "meta-co-final",
   "meta-co-floating",
   "meta-co-wa",
+  "meta-co-mini",
 ];
 
 const BASE_CHECKOUT_URL = "https://pay.hotmart.com/V40642188D";

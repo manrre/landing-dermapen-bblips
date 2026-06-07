@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "dev:clean": "powershell -Command \"if (Test-Path .next) { Remove-Item -Recurse -Force .next }\" && next dev -- --hostname 0.0.0.0 --port 3000",
+    "dev:full": "node deploy/backend/server.js & npm run dev",
     "build": "next build",
     "start": "next start",
     "preview:clean": "npm run build && next start -- --port 3000",

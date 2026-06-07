@@ -56,3 +56,9 @@ embeddings/
 *.mp3
 
 *.tar.gz
+*.zip
+
+# Build artifacts / deployment copies
+deploy/
+deploy-package/
+backend/

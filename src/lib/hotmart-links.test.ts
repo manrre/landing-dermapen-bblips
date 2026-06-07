@@ -7,7 +7,9 @@ const sources: HotmartSource[] = [
   "meta-co-roi",
   "meta-co-faq",
   "meta-co-final",
+  "meta-co-floating",
   "meta-co-wa",
+  "meta-co-mini",
 ];
 
 describe("hotmart affiliate links", () => {

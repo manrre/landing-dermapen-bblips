@@ -1,7 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { buildInternalCheckoutUrl, type HotmartSource } from "@/lib/hotmart-links";
+import type { HotmartSource } from "@/lib/hotmart-links";
 import { trackMetaEvent } from "@/lib/meta-client";
 
 interface HotmartButtonProps {
@@ -12,7 +12,7 @@ interface HotmartButtonProps {
 }
 
 export function HotmartButton({ children, source, className = "", variant = "primary" }: HotmartButtonProps) {
-  const href = buildInternalCheckoutUrl(source);
+  const href = `/go/${source}`;
 
   function handleClick() {
     trackMetaEvent("InitiateCheckout", {
